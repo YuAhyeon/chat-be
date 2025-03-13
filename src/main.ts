@@ -5,6 +5,7 @@ import http from "http";
 
 import { Server } from "socket.io";
 import connectDB from "./config/db";
+import chatRoutes from "./routes/chatRoutes";
 
 // env 가져오기
 dotenv.config();
@@ -31,5 +32,6 @@ app.use(cors());
 
 // JSON 형식 요청을 처리할 수 있도록 미들웨어 추가
 app.use(express.json());
+app.use("/api/chat", chatRoutes);
 
 server.listen(PORT, () => console.log("🚀 서버 실행 중"));
